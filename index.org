@@ -3,7 +3,6 @@
 #+DATE: 2017/04/29（Sabado）19:51
 #+AUTHOR: Albert Castellano Moreno
 #+EMAIL: acastemoreno@gmail.com
-#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
 #+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
 #+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
@@ -61,7 +60,7 @@ Experiencia Laboral:
 ** Clase Modelo
 - Programación.
 - Programación funcional.
-- Elixir: Familiarizarnos con la sintaxis y ver los conceptos base que emociona a desarrolladores en todo el mundo.
+- Elixir: Historia, Sintaxis y Pattern Matching.
 
 * Programación
   :PROPERTIES:
@@ -106,6 +105,13 @@ Experiencia Laboral:
   :SLIDE:    white
   :END:
 
+** 
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 900px
+[[file:images/multithreaded_programming.jpg]]
+#+END_CENTER
+
+
 ** [[https://youtu.be/xoNRtWl4fZU][Processing 2.7 million images with Elixir (vs Ruby) by David Padilla ]]
 #+BEGIN_CENTER
 #+ATTR_HTML: :width 600px
@@ -132,20 +138,180 @@ Experiencia Laboral:
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
 
-* [[https://youtu.be/YU2i3L-euB0][Porque programación funcional es popular?]]
+** Jerga en Programación Funcional
+- Inmutabilidad
+- Pureza
+- Currying
+
+** Inmutabilidad
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
+Mutabilidad en Js
+#+BEGIN_SRC js
+var ShoppingCart = function(){
+  items = [];
+
+  this.agregarItem = function(item){
+    //encontrar el item, si es que no fue agregado anteriormente.
+  };
+
+  this.total = function(){
+    var sum = 0;
+    //loop a travez de los items y sumandolos
+  }
+
+  this.contar = function(){
+    return items.length;
+  }
+};
+
+var cart = new ShoppingCart();
+cart.agregarItem({sku: "MAV", precio: 10000000000});
+#+END_SRC
+
+** 
+Agregar Items a la instancia creada:
+#+BEGIN_SRC js
+cart.agregarItem({sku: "ROVER", precio: 3333223322});
+cart.agregarItem({sku: "HAB", precio: 4433222234});
+#+END_SRC
+Desde un enfoque funcional (inmutabilidad):
+#+BEGIN_SRC js
+cartNoItems = ShoppingCart.new()
+cartStateOneItem = ShoppingCart.agregarItem(cartNoItems, 
+                                  {sku: "MAV", price: 10000000000})
+cartStateTwoItems = ShoppingCart.agregarItem(cartStateOneItem, 
+                                  {sku: "ROVER", price: 3333223322})
+cartStateThreeItems = ShoppingCart.agregarItem(cartStateTwoItems, 
+                                  {sku: "HAB", price: 4433222234})
+#+END_SRC
+** Pureza: 
+- "Data in, data out. Nada más es requerido"
+- Referido como caracteristica de funciones.
+- En una funcion pura, la salida o resultado de las operaciones siempre dependen de los parametros que reciba. Todo comportamiento es predecible.
+- Una funcion impura puede comunicarse con archivos y base de datos. El resultado de la funcion no solo depende de los argumentos.
+** Elixir: Rompe reglas.
+- Elixir es un lenguaje funcional impuro porque puede comunicarse con base de datos, leer y modificar archivos.
+- Elixir puede reasignar variables.
+#+BEGIN_SRC elixir
+animal = "Perro" # La variable animal se enlaza con el texto "Perro"
+animal = "Gato"  # La variable animal se reenlaza con el texto "Gato"
+#+END_SRC
+#+BEGIN_SRC elixir
+cart = ShoppingCart.new()
+cart = ShoppingCart.agregarItem(cart, {sku: "MAV", price: 10000000000})
+cart = ShoppingCart.agregarItem(cart, {sku: "ROVER", price: 3333223322})
+cart = ShoppingCart.agregarItem(cart, {sku: "HAB", price: 4433222234})
+#+END_SRC
+** 
+  :PROPERTIES:
+  :ARTICLE: smaller
+  :END:
+En elixir no existen estructuras mutables, por lo que reasignar (que si es permitido en elixir) es una solucion requerida. Si nos fijamos, la funcion agregarItem ahora es una funcion que transforma el primer parametro que se le pase.
+#+BEGIN_SRC elixir
+cart = ShoppingCart.new()
+cart = ShoppingCart.agregarItem(cart, {sku: "MAV", price: 10000000000})
+cart = ShoppingCart.agregarItem(cart, {sku: "ROVER", price: 3333223322})
+cart = ShoppingCart.agregarItem(cart, {sku: "HAB",  price: 4433222234})
+#+END_SRC
+Interesante. Si ampliamos el concepto de funcion como transformación de información (cadena productiva y transformadora) podemos usar lo siguiente:
+#+BEGIN_SRC elixir
+cart = ShoppingCart.new()
+  |> ShoppingCart.agregarItem({sku: "MAV", price: 10000000000})
+  |> ShoppingCart.agregarItem({sku: "ROVER", price: 3333223322})
+  |> ShoppingCart.agregarItem({sku: "HAB", price: 4433222234})
+#+END_SRC
+Se ejecuta la funcion "new" para luego su resultado ser transformado sucesivamente por la funcion agregarItem. Codigo elegante ♥
+
+Ejemplo:
+#+BEGIN_SRC elixir
+1..100 |> Enum.map(&(&1*&1)) |> Enum.filter(&(&1<50))
+#+END_SRC
+** Currying (Pre-Debugging)
+  :PROPERTIES:
+  :ARTICLE: smaller
+  :END:
+#+BEGIN_QUOTE
+"Chaining small functions in sequence" (rather than having a large function do a lot of stuff)
+    
+   -- Haskell Curry
+#+END_QUOTE
+#+BEGIN_CENTER
+#+ATTR_HTML: :Width 250px
+[[file:images/HaskellBCurry.jpg]]
+#+END_CENTER
+** 
+#+BEGIN_SRC elixir
+def convertir_a_segundos_luz(millas) do
+  metros= millas * 1609.34
+  metros * 3.335638620368e-9
+end
+#+END_SRC
+
+Currying:
+#+BEGIN_SRC elixir 
+def a_metros(millas) when is_integer(millas) do
+  millas * 1609.34
+end
+
+def a_segundos_luz(millas) do
+  (millas |> a_metros) * 3.335638620368e-9
+end
+#+END_SRC
+* Elixir
   :PROPERTIES:
   :SLIDE:    segue dark quote
   :ASIDE:    right bottom
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
+** [[https://youtu.be/xrIjfIjssLE][Erlang The Movie - 1986]]
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 300px
+[[file:images/erlang_the_movie.jpg]]
+#+END_CENTER
+** Jose Valim: Creador de Elixir (2011)
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 350px
+[[file:images/jose_valim.jpg]]
+#+END_CENTER
+-Parte del Core Team de Ruby On Rails
+#+BEGIN_QUOTE
+一I loved everything I saw in Erlang, but I hated the things I didn't see.
 
+      -- José Valim
+#+END_QUOTE
+** Proceso de Creación
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 700px
+[[file:images/pineapple_pen.gif]]
+#+END_CENTER
+** Erlang + Ruby + Clojure
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 400px
+[[file:images/logos.jpg]]
+#+END_CENTER
 ** 
   :PROPERTIES:
-  :FILL:     images/time.png
-  :TITLE:    white
-  :SLIDE:    white
+  :ARTICLE: large
   :END:
+#+BEGIN_QUOTE
+Elixir is what would happen if Erlang, Clojure, and Ruby somehow had a baby and it wasn’t an accident.
+  --Devin Torres
+#+END_QUOTE
 
+
+#+BEGIN_QUOTE
+Elixir offers developers the functional power and concurrent resilience of Erlang, with friendlier syntax, libraries and metaprogramming.
+
+  --Simon St. Laurent
+#+END_QUOTE
 
 * Familiarizandonos con Elixir
   :PROPERTIES:
