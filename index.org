@@ -1,0 +1,214 @@
+#+TITLE: Taller Piloto de Elixir
+#+SUBTITLE: Elixir Language
+#+DATE: 2017/04/29（Sabado）19:51
+#+AUTHOR: Albert Castellano Moreno
+#+EMAIL: acastemoreno@gmail.com
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+CREATOR: Emacs 25.2.1
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: es
+#+SELECT_TAGS: export
+
+#+GITHUB: http://github.com/acastemoreno
+
+#+FAVICON: images/elixir.png
+#+ICON: images/elixir.png
+
+** Amiguito. Quién eres?
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
+Formación:
+- Estudiante Pre-pregrado en Ingeniería Mecánica - Universidad Nacional de Ingeniería - Finalizando el 2017-1
+- Programación?: Autodidacta (php, python, ruby, prolog, clojure, haskell, elixir ♥)
+Experiencia Laboral:
+- Trabajos Freelancer con Symfony (framework php)
+- Participación en organización de eventos nacionales e internacionales de ASME.
+- Webmaster y Program Chair en Junta Estudiantil LainAmerica ASME
+- Webmaster y Vice-chair en SEASME-UNI
+- Trabajos freelancer Elixir y Phoenix para Termochilca y Enel
+- Coach en Makerlab ♥
+- Practicas pre-profesional en Control System Integration
+
+* Información sobre el taller
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** El camino a Elixir
+- Inicio taller: Viernes 26 de Mayo
+- Duración del taller: 3 meses.
+- Proyecto aplicando programación convencional (como si nuestras maquinas solo tuviese un solo procesador) : Calculo de velocidad de escape, distancia orbital, Llamaradas solares.
+- Proyecto aplicando programación concurrente (programación distribuida, forma moderna de hacer aplicaciones web):
+  - Primera Parte: un game engine
+  - Segunda Parte: real time application usando el game engine de la primera parte
+
+** Aclaraciónes
+- El taller no se trata de verme programar, xD
+- Toda pregunta es bien recibida.
+- No tengan miedo a experimentar.
+- No tengan miedo a equivocarse.
+- Cero algoritmos.
+- Programar de manera limpia y expresiva.
+
+** Clase Modelo
+- Programación.
+- Programación funcional.
+- Elixir: Familiarizarnos con la sintaxis y ver los conceptos base que emociona a desarrolladores en todo el mundo.
+
+* Programación
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** [[https://www.youtube.com/watch?v=8pTEmbeENF4][The future of Programing]]
+  :PROPERTIES:
+  :FILL:     images/4_ideas.png
+  :TITLE:    white
+  :SLIDE:    white
+  :END:
+
+** Resumen
+- "Tecnologia cambia rapidamente"
+- "La mente de las persona cambia lentamente"
+- "4 grandes ideas"
+- "Ideas que requiere personas que desaprendan lo que saben y piensen de manera diferente"
+- =Programadores que tienen una definición precisa de programación caen en DOGMAS. -> Resistencia a la Innovación.=
+
+** Secuencial -> Concurrente
+- Serie de instrucciones (Computadora, haz esto, luego esto, luego esto, .........)
+- Esto debido al Hardware (Maquina de Von Neumann)
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 450px
+[[file:images/neumann.png]]
+#+END_CENTER
+
+** 
+  :PROPERTIES:
+  :FILL:     images/parallel.png
+  :TITLE:    white
+  :SLIDE:    white
+  :END:
+
+** 
+  :PROPERTIES:
+  :FILL:     images/threads.png
+  :TITLE:    white
+  :SLIDE:    white
+  :END:
+
+** [[https://youtu.be/xoNRtWl4fZU][Processing 2.7 million images with Elixir (vs Ruby) by David Padilla ]]
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 600px
+[[file:images/ruby_process.png]]
+#+END_CENTER
+
+** 
+  :PROPERTIES:
+  :FILL:     images/ruby_results.png
+  :TITLE:    white
+  :SLIDE:    white
+  :END:
+
+** Entonces como programamos en un array de procesadores?
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 700px
+[[file:images/modelo-actor.png]]
+#+END_CENTER
+
+* Programación Funcional
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* [[https://youtu.be/YU2i3L-euB0][Porque programación funcional es popular?]]
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** 
+  :PROPERTIES:
+  :FILL:     images/time.png
+  :TITLE:    white
+  :SLIDE:    white
+  :END:
+
+
+* Familiarizandonos con Elixir
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Simple y limpio
+  :PROPERTIES:
+  :ARTICLE:  larger
+  :END:
+#+BEGIN_CENTER
+#+BEGIN_EXPORT html
+<div>
+ <p class="gray"># Esto es un comentario</p>
+ <p>titulo = <span class="blue">"un texto"</span><p>
+ <p>precio = <span class="green">24.50</span><p>
+ <p>cantidad = <span class="green">2</p>
+ <p class="red">:atomo<p>
+<div>
+#+END_EXPORT
+#+END_CENTER
+
+** Construcciones Comunes
+#+BEGIN_CENTER
+#+BEGIN_EXPORT html
+<div>
+ <p>tuple = {<span class="red">:metros</span>, <span class="green">50</span>, <span class="blue">"holi"</span>}</p>
+ <p>list = [<span class="blue">"ultimo"</span>, <span class="blue">"segundo"</span>, <span class="blue">"primero"</span>]</p>
+ <p>keyword_list = [<span class="red">font:</span> <span class="blue">"Arial"</span>, <span class="red">style:</span> <span class="blue">"bold"</span>, <span class="red">style:</span> <span class="blue">"italic"</span>]</p>
+ <p>map = %{<span class="red">nombre:</span> <span class="blue">"Albert"</span>, <span class="red">edad:</span> <span class="green">25</span>}</p>
+ <p>struct = %<span class="purple">Persona</span>{<span class="red">nombre:</span> <span class="blue">"Albert"</span>, <span class="red">apellidos:</span> <span class="blue">"Castellano Moreno"</span>, <span class="red">edad:</span> <span class="green">25</span>}</p>
+<div>
+#+END_EXPORT
+#+END_CENTER
+
+** Funciones
+#+BEGIN_SRC elixir
+#la tipica sintaxis para una funcion en elixir
+def nombre_funcion(arg) do
+  #hace algo
+end
+
+#llamar a la funcion
+nombre_function("algun dato")
+
+#los parentesis son opcionales en la mayoria de los casos
+nombre_function "algun dato"
+#+END_SRC
+** Ejemplo real
+#+BEGIN_SRC elixir
+def convertir_a_segundo_luz(millas) do
+  millas*5.36819e-6
+end
+
+convertir_a_segundo_luz("amiguito")
+(ArithmeticError) bad argument in arithmetic expression
+#+END_SRC
+
+* Thank You ˊ・ω・ˋ
+:PROPERTIES:
+:SLIDE: thank-you-slide segue
+:ASIDE: right
+:ARTICLE: flexbox vleft auto-fadein
+:END:

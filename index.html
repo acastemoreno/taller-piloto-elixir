@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<!-- 2017-05-04 jue 01:13 -->
+<meta  charset="utf-8" />
+<meta  htto-equiv="X-UA-Compatible" content="chrome=1" />
+<meta  name="generator" content="Org-mode with org-ioslide" />
+<meta  name="author" content="Albert Castellano Moreno" />
+
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--This one seems to work all the time, but really small on ipad-->
+<!--<meta name="viewport" content="initial-scale=0.4">-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" media="all" href="theme/css/default.css" />
+<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css" />
+<link rel="stylesheet" media="all" href="theme/css/small-icon.css" />
+<base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+<script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+
+   <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+<script src="js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local" type="text/javascript"></script>
+</head>
+<body style="opacity: 0">
+<slides class="layout-widescreen">
+<slide class="title-slide segue nobackground">
+       <aside class="gdbar"><img src="images/elixir.png"></aside>
+       <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+       <hgroup class="auto-fadein">
+         <h1 data-config-title><!-- populated from slide_config.json --></h1>
+         <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+         <p data-config-presenter><!-- populated from slide_config.json --></p>
+       </hgroup>
+    </slide>
+  
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org061ef56" class="outline-3">
+<h3 id="org061ef56">Amiguito. Quién eres?</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="smaller" id="text-">
+<p>
+Formación:
+</p>
+<ul>
+<li>Estudiante Pre-pregrado en Ingeniería Mecánica - Universidad Nacional de Ingeniería - Finalizando el 2017-1</li>
+<li>Programación?: Autodidacta (php, python, ruby, prolog, clojure, haskell, elixir ♥)</li>
+</ul>
+<p>
+Experiencia Laboral:
+</p>
+<ul>
+<li>Trabajos Freelancer con Symfony (framework php)</li>
+<li>Participación en organización de eventos nacionales e internacionales de ASME.</li>
+<li>Webmaster y Program Chair en Junta Estudiantil LainAmerica ASME</li>
+<li>Webmaster y Vice-chair en SEASME-UNI</li>
+<li>Trabajos freelancer Elixir y Phoenix para Termochilca y Enel</li>
+<li>Coach en Makerlab ♥</li>
+<li>Practicas pre-profesional en Control System Integration</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd253c84" class="outline-2">
+<h2 id="orgd253c84">Información sobre el taller</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgad001ec" class="outline-3">
+<h3 id="orgad001ec">El camino a Elixir</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Inicio taller: Viernes 26 de Mayo</li>
+<li>Duración del taller: 3 meses.</li>
+<li>Proyecto aplicando programación convencional (como si nuestras maquinas solo tuviese un solo procesador) : Calculo de velocidad de escape, distancia orbital, Llamaradas solares.</li>
+<li>Proyecto aplicando programación concurrente (programación distribuida, forma moderna de hacer aplicaciones web):
+<ul>
+<li>Primera Parte: un game engine</li>
+<li>Segunda Parte: real time application usando el game engine de la primera parte</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orge0e215c" class="outline-3">
+<h3 id="orge0e215c">Aclaraciónes</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El taller no se trata de verme programar, xD</li>
+<li>Toda pregunta es bien recibida.</li>
+<li>No tengan miedo a experimentar.</li>
+<li>No tengan miedo a equivocarse.</li>
+<li>Cero algoritmos.</li>
+<li>Programar de manera limpia y expresiva.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org43beae6" class="outline-3">
+<h3 id="org43beae6">Clase Modelo</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Programación.</li>
+<li>Programación funcional.</li>
+<li>Elixir: Familiarizarnos con la sintaxis y ver los conceptos base que emociona a desarrolladores en todo el mundo.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org91dda95" class="outline-2">
+<h2 id="org91dda95">Programación</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+<slide id="sec-" class="fill white nobackground" style="background-image: url(images/4_ideas.png)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-orgb02d253" class="outline-3">
+<h3 id="orgb02d253"><a href="https://www.youtube.com/watch?v=8pTEmbeENF4">The future of Programing</a></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org921f02d" class="outline-3">
+<h3 id="org921f02d">Resumen</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>"Tecnologia cambia rapidamente"</li>
+<li>"La mente de las persona cambia lentamente"</li>
+<li>"4 grandes ideas"</li>
+<li>"Ideas que requiere personas que desaprendan lo que saben y piensen de manera diferente"</li>
+<li><code>Programadores que tienen una definición precisa de programación caen en DOGMAS. -&gt; Resistencia a la Innovación.</code></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org3cab92f" class="outline-3">
+<h3 id="org3cab92f">Secuencial -&gt; Concurrente</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Serie de instrucciones (Computadora, haz esto, luego esto, luego esto, &#x2026;&#x2026;&#x2026;)</li>
+<li>Esto debido al Hardware (Maquina de Von Neumann)</li>
+</ul>
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="images/neumann.png" alt="neumann.png" width="450px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class="fill white nobackground" style="background-image: url(images/parallel.png)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-orgd856afb" class="outline-3">
+<h3 id="orgd856afb"></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class="fill white nobackground" style="background-image: url(images/threads.png)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-orga27ea5b" class="outline-3">
+<h3 id="orga27ea5b"></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd19cc3f" class="outline-3">
+<h3 id="orgd19cc3f"><a href="https://youtu.be/xoNRtWl4fZU">Processing 2.7 million images with Elixir (vs Ruby) by David Padilla </a></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="images/ruby_process.png" alt="ruby_process.png" width="600px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class="fill white nobackground" style="background-image: url(images/ruby_results.png)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-org081110c" class="outline-3">
+<h3 id="org081110c"></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org55d7bf2" class="outline-3">
+<h3 id="org55d7bf2">Entonces como programamos en un array de procesadores?</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="images/modelo-actor.png" alt="modelo-actor.png" width="700px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org1e1d540" class="outline-2">
+<h2 id="org1e1d540">Programación Funcional</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org84d55f3" class="outline-2">
+<h2 id="org84d55f3"><a href="https://youtu.be/YU2i3L-euB0">Porque programación funcional es popular?</a></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+<slide id="sec-" class="fill white nobackground" style="background-image: url(images/time.png)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-org094f62c" class="outline-3">
+<h3 id="org094f62c"></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd92975e" class="outline-2">
+<h2 id="orgd92975e">Familiarizandonos con Elixir</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9715f69" class="outline-3">
+<h3 id="org9715f69">Simple y limpio</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<article class="flexbox vcenter">
+<div>
+ <p class="gray"># Esto es un comentario</p>
+ <p>titulo = <span class="blue">"un texto"</span><p>
+ <p>precio = <span class="green">24.50</span><p>
+ <p>cantidad = <span class="green">2</p>
+ <p class="red">:atomo<p>
+<div>
+</article>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org232f6bc" class="outline-3">
+<h3 id="org232f6bc">Construcciones Comunes</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<article class="flexbox vcenter">
+<div>
+ <p>tuple = {<span class="red">:metros</span>, <span class="green">50</span>, <span class="blue">"holi"</span>}</p>
+ <p>list = [<span class="blue">"ultimo"</span>, <span class="blue">"segundo"</span>, <span class="blue">"primero"</span>]</p>
+ <p>keyword_list = [<span class="red">font:</span> <span class="blue">"Arial"</span>, <span class="red">style:</span> <span class="blue">"bold"</span>, <span class="red">style:</span> <span class="blue">"italic"</span>]</p>
+ <p>map = %{<span class="red">nombre:</span> <span class="blue">"Albert"</span>, <span class="red">edad:</span> <span class="green">25</span>}</p>
+ <p>struct = %<span class="purple">Persona</span>{<span class="red">nombre:</span> <span class="blue">"Albert"</span>, <span class="red">apellidos:</span> <span class="blue">"Castellano Moreno"</span>, <span class="red">edad:</span> <span class="green">25</span>}</p>
+<div>
+</article>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcfb5493" class="outline-3">
+<h3 id="orgcfb5493">Funciones</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+#la tipica sintaxis para una funcion en elixir
+def nombre_funcion(arg) do
+  #hace algo
+end
+
+#llamar a la funcion
+nombre_function("algun dato")
+
+#los parentesis son opcionales en la mayoria de los casos
+nombre_function "algun dato"
+</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org55f356f" class="outline-3">
+<h3 id="org55f356f">Ejemplo real</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+def convertir_a_segundo_luz(millas) do
+  millas*5.36819e-6
+end
+
+convertir_a_segundo_luz("amiguito")
+(ArithmeticError) bad argument in arithmetic expression
+</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" thank-you-slide segue nobackground" style="background-image: url(nil)">
+<aside class="gdbar right"><img src="images/elixir.png"></aside><article class="flexbox vleft auto-fadein" id="text-">
+<h2>
+  <p>Thank You ˊ・ω・ˋ</p>
+</h2>
+<br>
+<p class="auto-fadein" data-config-contact>
+</p>
+</article>
+
+</slide>
+<slide class="backdrop"></slide>
+</slides> 
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body> 
+
+</html>
