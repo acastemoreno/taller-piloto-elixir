@@ -349,27 +349,380 @@ Elixir offers developers the functional power and concurrent resilience of Erlan
 #+END_EXPORT
 #+END_CENTER
 
-** Funciones
+* Operadores
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Qué son los Operadores?
+#+BEGIN_QUOTE
+一Operators can be seen as a special form of function with different calling notation and a limited number of parameters.
+
+      -- Wikipedia
+#+END_QUOTE
+
+* func(left, right)
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* left <operador> right
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Operadores Matematicos
 #+BEGIN_SRC elixir
-#la tipica sintaxis para una funcion en elixir
-def nombre_funcion(arg) do
-  #hace algo
-end
-
-#llamar a la funcion
-nombre_function("algun dato")
-
-#los parentesis son opcionales en la mayoria de los casos
-nombre_function "algun dato"
+iex> 1 + 1
+2
+iex> 5 - 2
+3
+iex> 15 / 3
+5.0
+iex> 3 * 5
+15
 #+END_SRC
-** Ejemplo real
+* Comparadores
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Igualdad
 #+BEGIN_SRC elixir
-def convertir_a_segundo_luz(millas) do
-  millas*5.36819e-6
-end
+iex> "Albert" == "Albert"
+true
+iex> 1 == 2
+false
+iex> 1 == 1.0
+true
+iex> 1 === 1.0
+false
+#+END_SRC
+** Inegualdad: =!== y =!===
+#+BEGIN_SRC elixir
+iex> 1 != 2
+true
+iex> 1 != 1.0
+false
+iex> 1 !== 1.0
+true
+#+END_SRC
 
-convertir_a_segundo_luz("amiguito")
-(ArithmeticError) bad argument in arithmetic expression
+** Mayor/Menor que
+=>=, =>==, =<=, =<==
+
+Ejemplos:
+#+BEGIN_SRC elixir
+iex> 2 > 1
+true
+iex> 2 >= 2
+true
+iex> 1 < 2
+true
+iex> 1 <= 2
+true
+#+END_SRC
+
+* Operadores logicos
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Operaciones Booleanas
+Esperan solo =true=, =false=. Estos operadores son: =and=, =or= y =not=
+
+Ejemplos:
+#+BEGIN_SRC elixir
+iex> true and true
+true
+iex> true or false
+true
+iex> not true
+false
+#+END_SRC
+
+* Operador Match "="
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* patron = data
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Operador Match
+#+BEGIN_SRC elixir
+iex> nombre = "Albert"
+"Albert"
+iex> edad  = 25
+25
+#+END_SRC
+** Operador Match
+Las variables pueden reenlazarse.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+iex> nombre = "Albert"
+"Albert"
+iex> nombre = "Amiguito"
+"Amiguito"
+#+END_SRC
+
+** Operador Match
+El operador match es en realidad una afirmación que nosotros hacemos y que elixir tratara de hacer verdad enlazando valores a las variables que participen.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+iex> {nombre, edad} = {"Albert", 25}
+{"Albert", 25}
+iex> nombre
+"Albert"
+iex> edad
+25
+#+END_SRC
+
+** Operador Match
+Variables solo pueden enlazar una vez por match.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+#Contrajemplo
+iex> {edad, edad} = {24, 25}
+(MatchError) no match of right hand side value: {24, 25}
+#+END_SRC
+
+** Operador Match
+Usamos =_= para ignorar elementos en un match.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+iex> {nombre, _} = {"Albert", 25}
+{"Albert", 25}
+iex> nombre
+"Albert"
+#Tambien puedo usar la siguiente forma solo por un tema de doocumentación
+iex> {nombre, _edad} = {"Albert", 25}
+{"Albert", 25}
+iex> edad
+warning: ...........
+#+END_SRC
+
+** Operador Match
+Parte del contenido del patron puede contener información que debera ser matcheada en el lado de la data.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+iex> {"Albert", edad} = {"Albert", 25}
+{"Albert", 25}
+iex> edad
+25
+
+iex> {"Amiguito", edad} = {"Albert", 25}
+(MatchError) no match of right hand side value:
+#+END_SRC
+
+** Operador Match
+Usamos =^= cuando queremos usar el valor de las variables en el lado del patron.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+iex> nombre = "Albert"
+"Albert"
+iex> {^nombre, edad} = {"Albert", 25}
+{"Albert", 25}
+iex> edad
+25
+#+END_SRC
+
+** Operador Match
+Todos los tipos de datos vistos hasta hora pueden ser matcheados.
+
+Ejemplo:
+#+BEGIN_SRC elixir
+#Mapas
+iex> %{nombre: nombre, edad: edad} = %{nombre: "Albert", edad: 25}
+#Estructuras
+iex> %Persona{} = %Persona{nombre: "Albert", edad: 25}
+{"Albert", 25}
+#Binarios
+iex> "Hola " <> palabra = "Hola Mundo"
+"Hola Mundo"
+iex> palabra
+mundo
+#+END_SRC
+
+* Funciones anonimas
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Creando funciones anonimas
+Las funciones anonimas tienen la siguiente forma: =fn(<parametro1>, <parametro2>, ....) -> <ejecucion y retorno> end=
+
+Crearemos funciones en IEx y las guardaremos en una variable para posteriormente utilizarlas:
+
+#+BEGIN_SRC elixir
+iex> velocidad = fn (distancia) -> :math.sqrt(2 * 9.81 * distancia) end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+## El retorno nos sirve para corroborrar que hemos creado una funcion y 
+## no resulto en error.
+iex> sum = fn (a, b) -> a + b end
+#Function<12.17052888 in :erl_eval.expr/5>
+iex> sum.(1, 2)
+3
+#+END_SRC
+
+** Evaluamos la función
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+#+BEGIN_SRC elixir
+iex> velocidad = fn (distancia) -> :math.sqrt(2 * 9.81 * distancia) end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> velocidad.(3)
+7.672027111526653
+iex> sum = fn (a, b) -> a + b end
+#Function<12.17052888 in :erl_eval.expr/5>
+iex> sum.(1, 2)
+3
+#+END_SRC
+Al ejecutar =velocidad.(3)=, un patron se matchea con la data suministrada. 
+
+En el ejemplo, el patron =distancia= se matchea con =3= (=distancia = 3=). Esto resulta en la asignacion de =3= a la variable =distancia=. 
+
+Para luego ser utilizada en la evaluacion =:math.sqrt(2 * 9.81 * distancia)=. 
+
+=:math.sqrt= toma la raiz cuadrada de la expresion.
+
+Nota: el =:math= es un modulo de Erlang. Usar atomos en minusculas nos sirve para llamar modulos de Erlang (sean modulos propio del lenguaje o mediante librerias).
+
+** Funciones anonimas creadas en multiples Lineas
+Ahora podemos separar en piezas nuestras funciones dentro de multiples lineas, esto hace que sea más legible. IEx mantiene la linea abierta hasta que tipees =end=. El ejemplo anterior de esta manera:
+#+BEGIN_SRC elixir
+##En este caso obviamos englobar en parentesis
+##los parametros porque solo existe uno solo.
+iex> velocidad = fn 
+...> distancia -> :math.sqrt(2 * 9.81 * distancia)
+...> end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> velocidad.(10)
+14.007141035914502
+#+END_SRC
+** Funciones Anonimas y Pattern Matching
+Como anterioremente explique, cada vez que evaluamos una funcion anonima, un patron se matchea con la data suministrada, de lo cual deriva en asignaciones, para que luego sean utilizadas. Esto significa que se puede hacer matcheos de mayor complejidad
+Ejemplos:
+#+BEGIN_SRC elixir
+##En este caso se esta pasando un solo parametro que es una tupla y se esta devolviendo otra tupla con el orden invertido.
+iex> intercambio = fn 
+...> {primero, segundo} -> {segundo, primero}
+...> end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> intercambio.({6, 8})
+{8, 6}
+#+END_SRC
+** Una funcion anonima, multiples cuerpos
+Para el siguiente ejemplo, en mi carpeta creo un archivo =holiwoli.txt= que no es necesario que tenga contenido.
+
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 650px
+[[file:images/holiwoli.png]]
+#+END_CENTER
+** 
+Ejecuto =iex= en la carpeta donde cree =holiwoli.txt= y ejecuto una que me intereza. Analizamos el uso de una funcion llamada =open=, dentro de la libreria =File=, que por defecto Elixir ya incorpora.
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 650px
+[[file:images/file_open.png]]
+#+END_CENTER
+Al ejecutar la funcion, esta retorna una tupla, tal que su primer elemento es un atomo que representa el exito o fracaso de la operación, y el segundo es segun el primer termino, un identificador unico de proceso ó un mensaje de error.
+** 
+Ahora creamos una funcion anonima que procese ese resultado y dependiendo del caso hace una accion u otra.
+#+BEGIN_SRC elixir
+iex> verificar_archivo = fn 
+...> {:ok, archivo} -> "Leyendo archivo: #{IO.read(archivo, :line)}"
+...> {_, error}  -> "Error: #{:file.format_error(error)}"
+...> end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+#+END_SRC
+** 
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 850px
+[[file:images/verificar_archivo.png]]
+#+END_CENTER
+Lo que hace la función es verificar el primer primer patron que en este caso es ={:ok, archivo}=. Si consigue hacer el match ={:ok, archivo} = File.open(".......")= imprime el texto =Leyendo archivo: ........=, y si no matchea intentara hacer un nuevo match con ={_, error}= de la siguiente forma ={_, error} = File.open(".......")=, si logra hacer este ultimo match se imprimira el texto =Error: ..........=
+
+Significa que importa el orden indicado de los patrones.
+
+* Shortcut &
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** 
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+Hemos observador hasta el momento que para crear una funcion anonima es necesario definir 2 partes importantes:
+- El patron
+- El contenido que ejecuta
+Ahora, existe algo más practico que toma en concideracion el orden de los parametros que se estan tomando. Eso más practico es el uso de =&= para definir funciones anonimas. 
+
+Aqui un ejemplo en la forma como se utilizan.
+#+BEGIN_SRC elixir
+iex> doble = &(&1 * 2)
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> doble.(7)
+14
+#+END_SRC
+=&(...)= se refiere a la creacion de una funcion anonima. =&1= representa el primer parametro obtenido al evaluar la funcion. Entonces =&(&1 * 2)= es una funcion anonima de aridad 1 que toma su primer parametro (primer y unico parametro) y devuelve el doble.
+** 
+=&(....)= tiene las siguientes variaciones:
+- =&{....}=: Funcion anonima que crea una tupla como resultado
+- =&[....]=: Funcion anonima que crea una lista como resultado
+Ejemplos:
+#+BEGIN_SRC elixir
+iex> cociente_residuo = &{ div(&1,&2), rem(&1,&2) }
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> cociente_residuo.(13, 5)
+{2, 3}
+iex> lista = &[&1, &1 * 2, &1 * 3]
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> lista.(5)
+[5, 10, 15]
+#+END_SRC
+** Usos de &
+Sabemos que hace =&(....)=, pero para que sirve?
+
+Sirve crear funciones anonimas que sirvan como parametros a otras funciones..
+
+Ejemplos:
+#+BEGIN_SRC elixir
+iex> Enum.map [1,2,3,4], &(&1 + 1)
+[2, 3, 4, 5]
+iex> Enum.map [1,2,3,4], &(&1 * &1)
+[1, 4, 9, 16]
+iex> Enum.map [1,2,3,4], &(&1 < 3)
+[true, true, false, false]
 #+END_SRC
 
 * Thank You ˊ・ω・ˋ
