@@ -53,13 +53,28 @@ Experiencia Laboral:
 - Cero algoritmos.
 - Programar de manera limpia y expresiva.
 
-* Programación
+* Qué es programación?
   :PROPERTIES:
   :SLIDE:    segue dark quote
   :ASIDE:    right bottom
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
-** Qué es programación?
+** 
+Ser programador no es una actividad convencional, es una actividad creativa.
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 650px
+[[file:images/escuela_de_atenas.jpg]]
+#+END_CENTER
+
+** Pero (a opinión personal) existe un gran problema.
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 400px
+[[file:images/pintor.png]]
+#+END_CENTER
+
 ** [[https://www.youtube.com/watch?v=8pTEmbeENF4][The future of Programing]]
   :PROPERTIES:
   :FILL:     images/4_ideas.png
@@ -147,7 +162,7 @@ Actor Model (1973) [fn:1]
 [[file:images/ouprogpo.png]]
 #+END_CENTER
 
-** Ouprogpro
+** Ouprogpo
 :PROPERTIES:
 :ARTICLE:  smaller
 :END:
@@ -169,53 +184,26 @@ Diseña un programa X con las restricciones:
   :SLIDE:    white
   :END:
 
+** 
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 700
+file:images/haskell.png
+#+END_CENTER
+
 ** Jerga en Programación Funcional
 - Inmutabilidad
 - Pureza
 - Currying
 
 ** Inmutabilidad
-  :PROPERTIES:
-  :ARTICLE:  smaller
-  :END:
-Mutabilidad en Js
-#+BEGIN_SRC js
-var ShoppingCart = function(){
-  items = [];
-
-  this.agregarItem = function(item){
-    //encontrar el item, si es que no fue agregado anteriormente.
-  };
-
-  this.total = function(){
-    var sum = 0;
-    //loop a travez de los items y sumandolos
-  }
-
-  this.contar = function(){
-    return items.length;
-  }
-};
-
-var cart = new ShoppingCart();
-cart.agregarItem({sku: "MAV", precio: 10000000000});
-#+END_SRC
-
-** 
-Agregar Items a la instancia creada:
-#+BEGIN_SRC js
-cart.agregarItem({sku: "ROVER", precio: 3333223322});
-cart.agregarItem({sku: "HAB", precio: 4433222234});
-#+END_SRC
-Desde un enfoque funcional (inmutabilidad):
-#+BEGIN_SRC js
-cartNoItems = ShoppingCart.new()
-cartStateOneItem = ShoppingCart.agregarItem(cartNoItems, 
-                                  {sku: "MAV", price: 10000000000})
-cartStateTwoItems = ShoppingCart.agregarItem(cartStateOneItem, 
-                                  {sku: "ROVER", price: 3333223322})
-cartStateThreeItems = ShoppingCart.agregarItem(cartStateTwoItems, 
-                                  {sku: "HAB", price: 4433222234})
+#+BEGIN_CENTER
+No modificable
+#+END_CENTER
+#+BEGIN_SRC elixir
+iex> nombre = "Albert"
+iex> agregar_text(nombre, " Amiguito") #Nope
+iex> nombre
+"Albert"
 #+END_SRC
 ** Pureza: 
 - "Data in, data out. Nada más es requerido"
@@ -223,42 +211,43 @@ cartStateThreeItems = ShoppingCart.agregarItem(cartStateTwoItems,
 - En una funcion pura, la salida o resultado de las operaciones siempre dependen de los parametros que reciba. Todo comportamiento es predecible.
 - Una funcion impura puede comunicarse con archivos y base de datos. El resultado de la funcion no solo depende de los argumentos.
 ** Elixir: Rompe reglas.
-- Elixir es un lenguaje funcional impuro porque puede comunicarse con base de datos, leer y modificar archivos.
-- Elixir puede reasignar variables.
-#+BEGIN_SRC elixir
-animal = "Perro" # La variable animal se enlaza con el texto "Perro"
-animal = "Gato"  # La variable animal se reenlaza con el texto "Gato"
-#+END_SRC
-#+BEGIN_SRC elixir
-cart = ShoppingCart.new()
-cart = ShoppingCart.agregarItem(cart, {sku: "MAV", price: 10000000000})
-cart = ShoppingCart.agregarItem(cart, {sku: "ROVER", price: 3333223322})
-cart = ShoppingCart.agregarItem(cart, {sku: "HAB", price: 4433222234})
-#+END_SRC
-** 
   :PROPERTIES:
   :ARTICLE: smaller
   :END:
-En elixir no existen estructuras mutables, por lo que reasignar (que si es permitido en elixir) es una solucion requerida. Si nos fijamos, la funcion agregarItem ahora es una funcion que transforma el primer parametro que se le pase.
+- Elixir es un lenguaje funcional impuro porque puede comunicarse con base de datos, leer y modificar archivos.
+- Elixir puede reasignar variables.
 #+BEGIN_SRC elixir
-cart = ShoppingCart.new()
-cart = ShoppingCart.agregarItem(cart, {sku: "MAV", price: 10000000000})
-cart = ShoppingCart.agregarItem(cart, {sku: "ROVER", price: 3333223322})
-cart = ShoppingCart.agregarItem(cart, {sku: "HAB",  price: 4433222234})
+iex> animal = "Perro" # La variable animal se enlaza con el texto "Perro"
+iex> animal = "Gato"  # La variable animal se reenlaza con el texto "Gato"
 #+END_SRC
-Interesante. Si ampliamos el concepto de funcion como transformación de información (cadena productiva y transformadora) podemos usar lo siguiente:
-#+BEGIN_SRC elixir
-cart = ShoppingCart.new()
-  |> ShoppingCart.agregarItem({sku: "MAV", price: 10000000000})
-  |> ShoppingCart.agregarItem({sku: "ROVER", price: 3333223322})
-  |> ShoppingCart.agregarItem({sku: "HAB", price: 4433222234})
-#+END_SRC
-Se ejecuta la funcion "new" para luego su resultado ser transformado sucesivamente por la funcion agregarItem. Codigo elegante ♥
 
-Ejemplo:
 #+BEGIN_SRC elixir
-1..100 |> Enum.map(&(&1*&1)) |> Enum.filter(&(&1<50))
+iex> nombre = "Albert"
+iex> agregar_texto(nombre, " Amiguito") #Nope
+iex> nombre
+"Albert"
+
+iex> nombre = agregar_texto(nombre, " Amiguito")
+iex> nombre
+"Albert Amiguito"
 #+END_SRC
+** 
+Si nos fijamos, la funcion =agregar_texto= es una funcion transformadora de su primer parametro.
+#+BEGIN_SRC elixir
+iex> nombre = "Albert"
+iex> nombre = agregar_texto(nombre, " Amiguito")
+iex> nombre
+"Albert Amiguito"
+#+END_SRC
+Transformación de información (cadena productiva y transformadora):
+#+BEGIN_SRC elixir
+iex> nombre = "Albert" |> agregar_text(" Amiguito")
+iex> nombre
+"Albert Amiguito"
+#Otro ejemplo 
+iex> 1..100 |> Enum.map(&(&1*&1)) |> Enum.filter(&(&1<50))
+#+END_SRC
+Codigo elegante ♥
 ** Currying (Pre-Debugging)
   :PROPERTIES:
   :ARTICLE: smaller
@@ -296,14 +285,16 @@ end
   :ASIDE:    right bottom
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
-** [[https://youtu.be/xrIjfIjssLE][Erlang The Movie - 1986]]
-:PROPERTIES:
-:ARTICLE:  smaller
-:END:
+
+** I am your Father: [[https://youtu.be/xrIjfIjssLE][Erlang The Movie - 1986]]
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
 #+BEGIN_CENTER
 #+ATTR_HTML: :width 300px
 [[file:images/erlang_the_movie.jpg]]
 #+END_CENTER
+
 ** Jose Valim: Creador de Elixir (2011)
 :PROPERTIES:
 :ARTICLE:  smaller
