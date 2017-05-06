@@ -235,7 +235,7 @@ iex> nombre
 Si nos fijamos, la funcion =agregar_texto= es una funcion transformadora de su primer parametro.
 #+BEGIN_SRC elixir
 iex> nombre = "Albert"
-iex> nombre = agregar_texto(nombre, " Amiguito")
+iex> nombre = <b>agregar_texto(nombre, " Amiguito")</b>
 iex> nombre
 "Albert Amiguito"
 #+END_SRC
