@@ -564,10 +564,8 @@ Ejemplo:
 #+BEGIN_SRC elixir
 iex> nombre = "Albert"
 "Albert"
-iex> {^nombre, edad} = {"Albert", 25}
-{"Albert", 25}
-iex> edad
-25
+iex> {^nombre, edad} = {"Amiguito", 25}
+!Error
 #+END_SRC
 
 ** Operador Match
@@ -587,6 +585,25 @@ iex> palabra
 mundo
 #+END_SRC
 
+** Ejercicio
+#+BEGIN_SRC elixir 
+iex> a = [1, 2, 3]
+iex> a = 4
+iex> 4 = a
+iex> [a, b] = [ 1, 2, 3 ]
+iex> a = [ [ 1, 2, 3 ] ]
+iex> [a] = [ [ 1, 2, 3 ] ]
+iex> [[a]] = [ [ 1, 2, 3 ] ]
+iex> [ a, b, a ] = [ 1, 2, 3 ]
+iex> [ a, b, a ] = [ 1, 1, 2 ]
+iex> [ a, b, a ] = [ 1, 2, 1 ]
+iex> [ a, b, a ] = [ 1, 2, 3 ]
+iex> [ a, b, a ] = [ 1, 1, 2 ]
+iex> a = 1
+iex> ^a = 2
+iex> ^a = 1
+iex> ^a = 2 - a
+#+END_SRC
 
 * El camino a Elixir
 - Inicio tentativo del taller: Viernes 26 de Mayo
