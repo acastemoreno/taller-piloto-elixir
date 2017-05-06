@@ -109,12 +109,12 @@ Ser programador no es una actividad convencional, es una actividad creativa.
   :END:
 #+BEGIN_CENTER
 #+ATTR_HTML: :width 700px
-[[file:images/multithreaded_programming.jpg]]
+[[file:images/threads-memory.png]]
 #+END_CENTER
 ** Por qué es tan malo?
 #+BEGIN_CENTER
 #+ATTR_HTML: :width 700px
-[[file:images/threads-memory.png]]
+[[file:images/multithreaded_programming.jpg]]
 #+END_CENTER
 
 
